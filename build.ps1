@@ -5,6 +5,7 @@ param(
     [switch]$Release,
     [switch]$Run,
     [switch]$Test,
+    [switch]$Pack,
     [string]$OutputPath = ""
 )
 
@@ -72,6 +73,27 @@ elseif ($Run) {
     Write-Host ""
     Write-Host "  .\build.ps1 -Test" -ForegroundColor Cyan
     Write-Host ""
+}
+
+# Create NuGet package if requested
+if ($Pack) {
+    Write-Host ""
+    Write-Host "Creating NuGet package..." -ForegroundColor Green
+    
+    $PackageOutput = ".\nupkgs"
+    dotnet pack AiMergeTool\AiMergeTool.csproj -c $Configuration -o $PackageOutput
+    
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Pack failed!" -ForegroundColor Red
+        exit 1
+    }
+    
+    Write-Host "Package created successfully!" -ForegroundColor Green
+    Write-Host "Package location: $PackageOutput" -ForegroundColor Gray
+    
+    Get-ChildItem $PackageOutput -Filter "*.nupkg" | ForEach-Object {
+        Write-Host "  - $($_.Name)" -ForegroundColor Cyan
+    }
 }
 
 Write-Host ""

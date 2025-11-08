@@ -30,6 +30,25 @@ supreme-disco/
 
 ## Quick Start
 
+### Installation
+
+#### Option 1: Build from Source
+```bash
+git clone https://github.com/brendankowitz/supreme-disco.git
+cd supreme-disco
+dotnet build -c Release AiMergeTool.sln
+```
+
+#### Option 2: From NuGet Package
+```bash
+dotnet pack AiMergeTool/AiMergeTool.csproj -c Release -o ./nupkgs
+# Package will be available in ./nupkgs/AiMergeTool.1.0.0.nupkg
+```
+
+For more installation options, see [DISTRIBUTION.md](DISTRIBUTION.md).
+
+**Note**: This is a WPF application and cannot be distributed as a `dotnet tool` due to platform-specific requirements. See [DISTRIBUTION.md](DISTRIBUTION.md) for alternative distribution methods.
+
 ### Prerequisites
 - Windows OS (WPF application)
 - .NET 8.0 SDK or later
@@ -94,6 +113,7 @@ Sample test files are provided in the `TestFiles/` directory. See [TestFiles/REA
 
 - **[QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes
 - **[USAGE.md](USAGE.md)** - Comprehensive usage guide with troubleshooting
+- **[DISTRIBUTION.md](DISTRIBUTION.md)** - Distribution and packaging guide (NuGet, GitHub Releases, etc.)
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines and coding standards
 - **[AiMergeTool/README.md](AiMergeTool/README.md)** - Detailed application documentation
 - **[TestFiles/README.md](TestFiles/README.md)** - Test scenario documentation

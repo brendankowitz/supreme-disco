@@ -7,6 +7,20 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    
+    <!-- Package Metadata for NuGet Distribution -->
+    <!-- Note: Cannot use PackAsTool with WPF/Windows TFM -->
+    <PackageId>AiMergeTool</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Brendan Kowitz</Authors>
+    <Company>Brendan Kowitz</Company>
+    <Description>AI-powered merge tool for resolving git conflicts using OpenAI/Azure OpenAI with a graphical WPF interface. Install and run the executable from the package.</Description>
+    <PackageTags>git;merge;diff;ai;openai;azure;wpf;mergetool</PackageTags>
+    <PackageProjectUrl>https://github.com/brendankowitz/supreme-disco</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brendankowitz/supreme-disco</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +38,7 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
 </Project>
