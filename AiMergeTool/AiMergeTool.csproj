@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    
+    <!-- Package Metadata for NuGet Distribution -->
+    <!-- Note: Cannot use PackAsTool with WPF/Windows TFM -->
+    <PackageId>AiMergeTool</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Brendan Kowitz</Authors>
+    <Company>Brendan Kowitz</Company>
+    <Description>AI-powered merge tool for resolving git conflicts using OpenAI/Azure OpenAI with a graphical WPF interface. Install and run the executable from the package.</Description>
+    <PackageTags>git;merge;diff;ai;openai;azure;wpf;mergetool</PackageTags>
+    <PackageProjectUrl>https://github.com/brendankowitz/supreme-disco</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brendankowitz/supreme-disco</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="DiffPlex" Version="1.7.2" />
+    <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>
