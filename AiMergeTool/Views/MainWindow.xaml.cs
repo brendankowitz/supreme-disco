@@ -1,4 +1,5 @@
 using System.Windows;
+using AiMergeTool.Utilities;
 using AiMergeTool.ViewModels;
 using ICSharpCode.AvalonEdit.Document;
 
@@ -40,17 +41,20 @@ public partial class MainWindow : Window
         };
 
         // Apply syntax highlighting based on file extension
-        ApplySyntaxHighlighting();
+        ApplySyntaxHighlighting(viewModel);
     }
 
-    private void ApplySyntaxHighlighting()
+    private void ApplySyntaxHighlighting(MainViewModel viewModel)
     {
-        // Try to determine file type from DataContext
-        if (DataContext is MainViewModel vm)
+        // Get file extension from merge context
+        var highlightingName = FileTypeDetector.GetSyntaxHighlightingName(
+            viewModel.MergeContext.Ours.FilePath);
+        
+        // Apply highlighting if found
+        if (!string.IsNullOrEmpty(highlightingName))
         {
-            // Get file extension - we'll use a simple heuristic
-            // In a real app, we'd detect from the actual file being merged
-            var highlighting = ICSharpCode.AvalonEdit.Highlighting.HighlightingManager.Instance.GetDefinitionByExtension(".cs");
+            var highlighting = ICSharpCode.AvalonEdit.Highlighting.HighlightingManager.Instance
+                .GetDefinition(highlightingName);
             
             if (highlighting != null)
             {

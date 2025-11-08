@@ -15,7 +15,7 @@ public class MainViewModel : INotifyPropertyChanged
 {
     private readonly DiffService _diffService;
     private readonly AiMergeService _aiMergeService;
-    private MergeContext _mergeContext;
+    private readonly MergeContext _mergeContext;
     private string _oursContent = string.Empty;
     private string _mergedContent = string.Empty;
     private string _theirsContent = string.Empty;
@@ -23,6 +23,8 @@ public class MainViewModel : INotifyPropertyChanged
     private bool _isProcessing;
 
     public event PropertyChangedEventHandler? PropertyChanged;
+
+    public MergeContext MergeContext => _mergeContext;
 
     public MainViewModel(DiffService diffService, AiMergeService aiMergeService, MergeContext mergeContext)
     {
