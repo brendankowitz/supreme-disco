@@ -41,6 +41,11 @@ supreme-disco/
 dotnet build AiMergeTool.sln
 ```
 
+**Windows PowerShell:**
+```powershell
+.\build.ps1
+```
+
 ### Configuration
 
 Set up your AI service credentials using environment variables:
@@ -59,17 +64,39 @@ set OPENAI_DEPLOYMENT=your-deployment-name
 set OPENAI_IS_AZURE=true
 ```
 
+See [.env.template](.env.template) for a complete configuration template.
+
+### Testing
+
+Run with sample test files:
+```bash
+test.bat
+```
+
+Or manually:
+```bash
+AiMergeTool.exe TestFiles\base.cs TestFiles\ours.cs TestFiles\theirs.cs TestFiles\merged.cs
+```
+
 ### Running
 
 ```bash
 AiMergeTool.exe <base> <local> <remote> <merged>
 ```
 
-See [AiMergeTool/README.md](AiMergeTool/README.md) for detailed usage instructions.
+See [QUICKSTART.md](QUICKSTART.md) for a detailed quick start guide or [AiMergeTool/README.md](AiMergeTool/README.md) for complete usage instructions.
 
 ## Testing
 
 Sample test files are provided in the `TestFiles/` directory. See [TestFiles/README.md](TestFiles/README.md) for details on the test scenario.
+
+## Documentation
+
+- **[QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes
+- **[USAGE.md](USAGE.md)** - Comprehensive usage guide with troubleshooting
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines and coding standards
+- **[AiMergeTool/README.md](AiMergeTool/README.md)** - Detailed application documentation
+- **[TestFiles/README.md](TestFiles/README.md)** - Test scenario documentation
 
 ## Git Integration
 
